@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>抽签网站</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 免责声明覆盖层 -->
+  <div id="disclaimerOverlay">
+    <p>1.本网站只是自动抽签网站，仅供娱乐使用，并非赌博<br>
+        2.请勿搬运本网站用于其他用途<br></p>
+    <button id="agreeButton" class="draw-button">我同意</button>
+  </div>
+
+  <!-- 主内容 -->
+  <div id="mainContent" style="display: none;">
+    <!-- 滚动字幕条 -->
+    <div class="marquee">
+      <div class="marquee-content" id="marqueeContent">
+          来吧，朋友们！踏入学号抽签的奇妙赌场，一键下注，学号命运瞬间揭晓！这里是公平与惊喜的交汇点，无论是寻找幸运儿还是趣味点名，都能让你心跳加速！快来试试，让学号抽签带给你前所未有的刺激体验！
+      </div>
+    </div>
+
+    <!-- 视频容器 -->
+    <div class="video-container">
+      <video id="drawVideo" src="lhj.mp4" controls></video>
+    </div>
+
+    <!-- 抽1次按钮 -->
+    <button class="draw-button" onclick="drawOnce()">抽1次</button>
+    <!-- 自动抽组按钮 -->
+    <button class="draw-button" onclick="drawGroup()">自动抽组</button>
+
+    <!-- 抽签结果覆盖层 -->
+    <div id="resultOverlay" onclick="goBack()">
+      <span id="resultText"></span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
