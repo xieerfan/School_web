@@ -16,13 +16,14 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/*视频播放器*/
+/* 视频播放器 */
 .video-container {
   position: relative;
   width: 90%; /* 调整宽度 */
   max-width: 600px; /* 调整最大宽度 */
   margin: 20px auto;
-  height: 50vh; /* 新增：限制视频容器的高度 */
+  height: 33vh; /* 新增：限制视频容器的高度 */
+  overflow: hidden; /* 确保视频内容不会溢出容器 */
 }
 
 video {
@@ -32,12 +33,15 @@ video {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   display: block;
   outline: none;
+  border: none !important; /* 确保边框被隐藏 */
+  object-fit: cover; /* 确保视频内容完全覆盖容器 */
 }
 
-video::-webkit-media-controls{
-        display:none !important;
+video::-webkit-media-controls {
+  display: none !important;
 }
-/*按钮*/
+
+/* 按钮 */
 .draw-button {
   display: block;
   margin: 20px auto;
@@ -58,10 +62,11 @@ video::-webkit-media-controls{
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.7);
 }
 
-#agreeButton{
+#agreeButton {
   font-size: 2.5rem;
 }
-/*界面*/
+
+/* 界面 */
 #disclaimerOverlay {
   position: fixed;
   top: 0;
@@ -139,7 +144,48 @@ video::-webkit-media-controls{
     transform: translateX(-100%);
   }
 }
-/*滚动条*/
+
+/* 滚动条 */
 #marqueeContent {
   font-size: 2rem;
+}
+/* 抽签结果动画 */
+@keyframes fadeInExpand {
+  from {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#resultOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: #FFD700;
+  font-size: 3rem;
+  text-align: center;
+  animation: fadeInExpand 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.335) forwards;
+}
+
+#resultOverlay span {
+  cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s;
+}
+
+#resultOverlay span:hover {
+  transform: scale(1.1);
+  color: #fff;
 }
